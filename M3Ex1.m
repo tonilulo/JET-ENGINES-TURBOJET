@@ -67,6 +67,8 @@ T_t0 = T_0 * (1+(gamma_c-1)*M_0^2/2);
 p_t0 = p_0 * (1+(gamma_c-1)*M_0^2/2)^(gamma_c/(gamma_c-1));
 a_0 = sqrt(gamma_c*R_g*T_0);
 
+u_0 = M_0*a_0;
+
 freeStream = [T_t0, p_t0, T_0, p_0, a_0, M_0];
 
 % Inlet
@@ -133,7 +135,11 @@ u_9 = M_9*a_9;
 
 nozzle = [T_t9, p_t9, T_9, p_9, a_9, M_9];
 
-%% Postprocessing
+%% Performance parameters
+
+F_s = (1+f)*u_9 - u_0;
+
+%% Plots
 
 T_tvec = [freeStream(1), inlet(1), LPC(1), HPC(1), burner(1), HPT(1), LPT(1), nozzle(1)];
 p_tvec = [freeStream(2), inlet(2), LPC(2), HPC(2), burner(2), HPT(2), LPT(2), nozzle(2)];
